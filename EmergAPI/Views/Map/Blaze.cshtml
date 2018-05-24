@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Blaze";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDZqyBirRugDr1tcVRyVgw07wZtURZWDw&callback=initMap"
+        type="text/javascript"></script>
+<style>
+    #map {
+        height: 65vh;
+    }
+</style>
+<script>
+
+    $(function () {
+        var map = initMap();
+
+        function LoadBlaze() {
+
+            $.ajax({
+                url: "/Map/GetFire",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (res) {
+                    $.each(res, function (i, r) {
+                        var lat = parseFloat(r.Latitude);
+                        var lng = parseFloat(r.Longitude);
+                        var marker = new google.maps.Marker({
+                            position: { lat: lat, lng: lng },
+                            icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                            map: map,
+                        });
+                    });
+                }
+            });
+
+        }
+        setInterval(LoadBlaze, 1000);
+    });
+
+    function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: { lat: 31.205753, lng: 29.924526 }
+        });
+        return map;
+    }
+
+</script>
+
+
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Blaze Emergency</h3>
+        <div class="box-tools pull-right">
+            <!-- Buttons, labels, and many other things can be placed here! -->
+            <!-- Here is a label for example -->
+        </div>
+        <!-- /.box-tools -->
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div id="map">
+
+        </div>
+    </div>
+</div>
+<br /><br />
+

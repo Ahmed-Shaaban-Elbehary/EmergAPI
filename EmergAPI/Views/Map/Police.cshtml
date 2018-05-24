@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Police";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDZqyBirRugDr1tcVRyVgw07wZtURZWDw&callback=initMap"
+        type="text/javascript"></script>
+<style>
+    #map {
+        height:65vh;
+    }
+    .map-icon-label .map-icon {
+        font-size: 24px;
+        color: #FFFFFF;
+        line-height: 48px;
+        text-align: center;
+        white-space: nowrap;
+    }
+</style>
+<script>
+    
+    $(function () {
+        var map = initMap();
+        //$("#btnP").click(function () {
+        function LoadPolice() {
+            $.ajax({
+                url: "/Map/Getpolice",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (res) {
+                    $.each(res, function (i, r) {
+                        var lat = parseFloat(r.Latitude);
+                        var lng = parseFloat(r.Longitude);
+                        var marker = new mapIcons.Marker({
+                            position: { lat: lat, lng: lng },
+                            map: map,
+                            icon: {
+                                path: mapIcons.shapes.SQUARE_PIN,
+                                fillColor: '#00CCBB',
+                                fillOpacity: 1,
+                                strokeColor: '',
+                                strokeWeight: 0
+                            },
+                            map_icon_label: '<span class="map-icon map-icon-point-of-interest"></span>'
+                                
+                        });
+                    });
+                }
+            });
+        }
+        setInterval(LoadPolice, 1000);
+        //});
+
+    });
+    
+    function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 7,
+            center: { lat: 26.8206, lng: 30.8025 },
+            mapTypeId: 'roadmap'
+        });
+        return map;
+    }
+
+</script>
+
+
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Police Emergency</h3>
+        <div class="box-tools pull-right">
+            <!-- Buttons, labels, and many other things can be placed here! -->
+            <!-- Here is a label for example -->
+             @*<button id="btnP" class="btn btn-danger">GET</button>*@
+        </div>
+        <!-- /.box-tools -->
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div id="map">
+
+        </div>
+    </div>
+</div>
+<br /><br />

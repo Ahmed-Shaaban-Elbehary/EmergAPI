@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "Map";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDZqyBirRugDr1tcVRyVgw07wZtURZWDw&callback=initMap"
+        type="text/javascript"></script>
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+</style>
+<script>
+
+    $(function () {
+        var map = initMap();
+
+        $("#btnP").click(function () {
+            $.ajax({
+                url: "/Map/Getpolice",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (res) {
+                    $.each(res, function (i, r) {
+                        var lat = parseFloat(r.Latitude);
+                        var lng = parseFloat(r.Longitude);
+                        var marker = new google.maps.Marker({
+                            position: { lat: lat, lng: lng },
+                            icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                            map: map,
+                        });
+                    });
+                }
+            });
+        });
+
+        $("#btnE").click(function () {
+
+            $.ajax({
+                url: "/Map/GetEmbulance",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (res) {
+                    $.each(res, function (i, r) {
+                        var lat = parseFloat(r.Latitude);
+                        var lng = parseFloat(r.Longitude);
+                        var marker = new google.maps.Marker({
+                            position: { lat: lat, lng: lng },
+                            icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                            map: map,
+                        });
+                    });
+                }
+            });
+
+        });
+
+        $("#btnF").click(function () {
+
+            $.ajax({
+                url: "/Map/GetFire",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (res) {
+                    $.each(res, function (i, r) {
+                        var lat = parseFloat(r.Latitude);
+                        var lng = parseFloat(r.Longitude);
+                        var marker = new google.maps.Marker({
+                            position: { lat: lat, lng: lng },
+                            icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                            map: map,
+                        });
+                    });
+                }
+            });
+
+        });
+
+    });
+
+    function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: { lat: 31.205753, lng: 29.924526 }
+        });
+        return map;
+    }
+
+</script>
+<h2>Map Demo</h2>
+
+<button id="btnP" class="btn btn-success">Police</button>
+<button id="btnE" class="btn btn-warning">Embulance</button>
+<button id="btnF" class="btn btn-danger">Embulance</button>
+
+
+<table class="table" id="tb"></table>
+
+<div id="map">
+
+</div>
