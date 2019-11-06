@@ -294,73 +294,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805230212360_InitialModel.cs" />
-    <Compile Include="Migrations\201805230212360_InitialModel.Designer.cs">
-      <DependentUpon>201805230212360_InitialModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805230219595_OperatorConfiguration.cs" />
-    <Compile Include="Migrations\201805230219595_OperatorConfiguration.Designer.cs">
-      <DependentUpon>201805230219595_OperatorConfiguration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805230221349_UserConfiguration.cs" />
-    <Compile Include="Migrations\201805230221349_UserConfiguration.Designer.cs">
-      <DependentUpon>201805230221349_UserConfiguration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805230222113_BloodTypeConfiguration.cs" />
-    <Compile Include="Migrations\201805230222113_BloodTypeConfiguration.Designer.cs">
-      <DependentUpon>201805230222113_BloodTypeConfiguration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805230223086_DiseaseConfiguration.cs" />
-    <Compile Include="Migrations\201805230223086_DiseaseConfiguration.Designer.cs">
-      <DependentUpon>201805230223086_DiseaseConfiguration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805230224459_EventConfiguration.cs" />
-    <Compile Include="Migrations\201805230224459_EventConfiguration.Designer.cs">
-      <DependentUpon>201805230224459_EventConfiguration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805230225380_EventTypeConfiguration.cs" />
-    <Compile Include="Migrations\201805230225380_EventTypeConfiguration.Designer.cs">
-      <DependentUpon>201805230225380_EventTypeConfiguration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805240057553_EditeRelationBetweenUserOperatorAndGender.cs" />
-    <Compile Include="Migrations\201805240057553_EditeRelationBetweenUserOperatorAndGender.Designer.cs">
-      <DependentUpon>201805240057553_EditeRelationBetweenUserOperatorAndGender.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805240121173_EditMappUserDisease.cs" />
-    <Compile Include="Migrations\201805240121173_EditMappUserDisease.Designer.cs">
-      <DependentUpon>201805240121173_EditMappUserDisease.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805241322176_updateDateUserOperatorToString.cs" />
-    <Compile Include="Migrations\201805241322176_updateDateUserOperatorToString.Designer.cs">
-      <DependentUpon>201805241322176_updateDateUserOperatorToString.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805241545453_EditEventTypeTable.cs" />
-    <Compile Include="Migrations\201805241545453_EditEventTypeTable.Designer.cs">
-      <DependentUpon>201805241545453_EditEventTypeTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805251957045_adddforgeinKeyInUserBloodtype.cs" />
-    <Compile Include="Migrations\201805251957045_adddforgeinKeyInUserBloodtype.Designer.cs">
-      <DependentUpon>201805251957045_adddforgeinKeyInUserBloodtype.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805262237302_AddIsporcessedInEventTable.cs" />
-    <Compile Include="Migrations\201805262237302_AddIsporcessedInEventTable.Designer.cs">
-      <DependentUpon>201805262237302_AddIsporcessedInEventTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805270749163_populateCategorisesTable.cs" />
-    <Compile Include="Migrations\201805270749163_populateCategorisesTable.Designer.cs">
-      <DependentUpon>201805270749163_populateCategorisesTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805280335127_asdasdasd.cs" />
-    <Compile Include="Migrations\201805280335127_asdasdasd.Designer.cs">
-      <DependentUpon>201805280335127_asdasdasd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805280630258_editeEventUser.cs" />
-    <Compile Include="Migrations\201805280630258_editeEventUser.Designer.cs">
-      <DependentUpon>201805280630258_editeEventUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805280636199_deleteMigration.cs" />
-    <Compile Include="Migrations\201805280636199_deleteMigration.Designer.cs">
-      <DependentUpon>201805280636199_deleteMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201911061149311_InitialModel.cs" />
+    <Compile Include="Migrations\201911061149311_InitialModel.Designer.cs">
+      <DependentUpon>201911061149311_InitialModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ArchiveController.cs" />
@@ -403,56 +339,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805230212360_InitialModel.resx">
-      <DependentUpon>201805230212360_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805230219595_OperatorConfiguration.resx">
-      <DependentUpon>201805230219595_OperatorConfiguration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805230221349_UserConfiguration.resx">
-      <DependentUpon>201805230221349_UserConfiguration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805230222113_BloodTypeConfiguration.resx">
-      <DependentUpon>201805230222113_BloodTypeConfiguration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805230223086_DiseaseConfiguration.resx">
-      <DependentUpon>201805230223086_DiseaseConfiguration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805230224459_EventConfiguration.resx">
-      <DependentUpon>201805230224459_EventConfiguration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805230225380_EventTypeConfiguration.resx">
-      <DependentUpon>201805230225380_EventTypeConfiguration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805240057553_EditeRelationBetweenUserOperatorAndGender.resx">
-      <DependentUpon>201805240057553_EditeRelationBetweenUserOperatorAndGender.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805240121173_EditMappUserDisease.resx">
-      <DependentUpon>201805240121173_EditMappUserDisease.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805241322176_updateDateUserOperatorToString.resx">
-      <DependentUpon>201805241322176_updateDateUserOperatorToString.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805241545453_EditEventTypeTable.resx">
-      <DependentUpon>201805241545453_EditEventTypeTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805251957045_adddforgeinKeyInUserBloodtype.resx">
-      <DependentUpon>201805251957045_adddforgeinKeyInUserBloodtype.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805262237302_AddIsporcessedInEventTable.resx">
-      <DependentUpon>201805262237302_AddIsporcessedInEventTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805270749163_populateCategorisesTable.resx">
-      <DependentUpon>201805270749163_populateCategorisesTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805280335127_asdasdasd.resx">
-      <DependentUpon>201805280335127_asdasdasd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805280630258_editeEventUser.resx">
-      <DependentUpon>201805280630258_editeEventUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805280636199_deleteMigration.resx">
-      <DependentUpon>201805280636199_deleteMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911061149311_InitialModel.resx">
+      <DependentUpon>201911061149311_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
