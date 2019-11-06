@@ -12,7 +12,7 @@ namespace EmergAPI.EntitytypeConfiguration
         public DiseaseConfiguration()
         {
             HasKey(k => k.Id);
-            Property(P => P.Name).HasMaxLength(10);
+            Property(P => P.Name).HasMaxLength(255);
         }
     }
 }

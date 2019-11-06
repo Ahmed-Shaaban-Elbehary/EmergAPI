@@ -33,12 +33,10 @@ namespace EmergAPI.Models
 
         [Display(Name = "Mobile Number")]
         public int? MobilePhone { get; set; }
-
-        [DataType(DataType.Date)]
-        public DateTime Birthdate { get; set; }
-
-        [DataType(DataType.Date)]
-        public DateTime Hiredate { get; set; }
+        
+        public string Birthdate { get; set; }
+        
+        public string Hiredate { get; set; }
         
         public decimal Salary { get; set; }
 

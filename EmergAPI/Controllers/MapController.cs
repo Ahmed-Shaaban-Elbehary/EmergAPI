@@ -14,18 +14,7 @@ namespace EmergAPI.Controllers
             db = new _dbContext();
         }
         
-        // GET: Map/Map
-        public ActionResult Map()
-        {
-            return View();
-        }
-        public JsonResult GETEvent()
-        {
-            //var data = db.Events.ToList();
-            var data = db.Events.ToList();
-            return Json(data, JsonRequestBehavior.AllowGet);
 
-        }
 
         //---------Police---------------
         public ActionResult Police()
@@ -33,46 +22,61 @@ namespace EmergAPI.Controllers
             return View();
         }
         //------------AJAX CALL---------
-        //public JsonResult Getpolice()
-        //{
-        //    //var query = from e in db.Events
-        //    //            //where e.EventType == EventType.Police
-        //    //            select e;
+        public JsonResult Getpolice()
+        {
+            var query = db.Events.Where(e => e.EventType == EventType.Police);
+            return Json(query, JsonRequestBehavior.AllowGet);
+           
 
-        //    //return Json(query, JsonRequestBehavior.AllowGet);
-
-        //}
-
+        }
+        //------------AJAX CALL---------
+        public JsonResult GetpoliceById(int ID)
+        {
+            var query = db.Events.Where(e => e.Id == ID);
+            return Json(query, JsonRequestBehavior.AllowGet);
+        }
         //-------------Embulance------------
         public ActionResult Embulance()
         {
             return View();
         }
         //------------AJAX CALL---------
-        //public JsonResult GetEmbulance()
-        //{
-        //    ////var data = db.Events.ToList();
-        //    //var query = from e in db.Events
-        //    //            //where e.EventType == EventType.Embulance
-        //    //            select e;
-        //    //return Json(query, JsonRequestBehavior.AllowGet);
+        public JsonResult GetEmbulance()
+        {
+            var query = db.Events.Where(e => e.EventType == EventType.Embulance);
 
-        //}
-
+            return Json(query, JsonRequestBehavior.AllowGet);                                                
+        }
+        [HttpGet]
+        public JsonResult GetEmbulanceById(int ID)
+        {
+            var query = db.Events.Where(e => e.EventType == EventType.Police);
+            return Json(query, JsonRequestBehavior.AllowGet);
+        }
         //-------------Fire------------
-        public ActionResult Blaze()
+        public ActionResult Fire()
         {
             return View();
         }
         //------------AJAX CALL---------
-        //public JsonResult GetFire()
-        //{
-        //    ////var data = db.Events.ToList();
-        //    //var query = from e in db.Events
-        //    //            where e.EventType == EventType.blaze
-        //    //            select e;
-        //    //return Json(query, JsonRequestBehavior.AllowGet);
+        public JsonResult GetFire()
+        {
 
-        //}
+            var query = db.Events.Where(e => e.EventType == EventType.Fire);
+            return Json(query, JsonRequestBehavior.AllowGet);
+
+        }
+        [HttpGet]
+        public JsonResult GetFireById(int ID)
+        {
+            var query = db.Events.Where(e => e.EventType == EventType.Police);
+            return Json(query, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ComingEvents()
+        {
+            return View();
+        }
+
     }
 } 

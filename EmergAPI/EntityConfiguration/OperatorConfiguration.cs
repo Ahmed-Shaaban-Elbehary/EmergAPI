@@ -24,15 +24,7 @@ namespace EmergAPI.EntitytypeConfiguration
 
             Property(p => p.ConfirmPassword)
                 .HasMaxLength(255);
-
-            Property(p => p.Birthdate)
-                .HasColumnType("Date")
-                .IsOptional();
-
-            Property(p => p.Hiredate)
-                .HasColumnType("Date")
-                .IsOptional();
-
+            
             Property(p => p.Salary)
                 .HasColumnType("smallmoney")
                 .IsOptional();

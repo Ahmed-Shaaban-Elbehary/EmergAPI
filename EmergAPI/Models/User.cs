@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -17,7 +18,7 @@ namespace EmergAPI.Models
 
         public string Email { get; set; }
 
-        public DateTime Birthdate { get; set; }
+        public string Birthdate { get; set; }
 
         public int? mobileNo { get; set; }
 
@@ -28,11 +29,13 @@ namespace EmergAPI.Models
         public decimal? Weight { get; set; }
 
         public Gender Gender { get; set; }
+        
+        public int bloodType_Id { get; set; }
 
-        public BloodType BloodType { get; set; }
+        //[ForeignKey("bloodType_Id")]
+        //public BloodType BloodType { get; set; }
+        
+        //public ICollection<Disease> Diseases { get; set; }
 
-        public ICollection<Disease> Diseases { get; set; }
-
-        public ICollection<Event> Events { get; set; }
     }
 }

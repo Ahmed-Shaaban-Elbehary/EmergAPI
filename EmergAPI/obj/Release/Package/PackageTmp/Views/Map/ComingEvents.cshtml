@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "ComingEvents";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+
+        var url = window.location.pathname;
+        var id = url.substring(url.lastIndexOf('/') + 1);
+        $("#DoneBtn").click(function (e) {
+            e.preventDefault();
+             $.ajax({
+                 url: 'Map/GetpoliceById',
+                 data: { ID: id },
+                 dataType: "json",
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function (res) {
+                     alert(res);
+                 }
+            });
+        });
+    });
+</script>
+<div class="box box-success">
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="profile-username text-center">Nina Mcintire</h3>
+
+                <p class="text-muted text-center">Police Statues</p>
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="col-md-12">
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <b>Date and Time</b> <a class="pull-right">2014-08-12 11:14:54am</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Latitude</b> <a class="pull-right">30.04</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Longtiude</b> <a class="pull-right">31.24</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Mobile Phone</b> <a class="pull-right">01148177915</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>BloodType</b> <a class="pull-right">A+</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Diseases</b> <a class="pull-right">Diabetes, heart, asthma</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <a id="DoneBtn" href="/Map/police" class="col-md-12 btn btn-primary btn-block"><b>Done</b></a>
+            </div>
+        </div>
+    </div>
+</div>
+

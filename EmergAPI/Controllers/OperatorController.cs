@@ -43,6 +43,7 @@ namespace EmergAPI.Controllers
         {
             return View();
         }
+
         // UPDATE: Operator/Create
         [HttpPut]
         public ActionResult EditOperator(int id,Operator ope)
@@ -77,11 +78,16 @@ namespace EmergAPI.Controllers
             }
             return RedirectToAction("Index");
         }
+
         // DELETE: Operator/Create
         [HttpDelete]
-        public ActionResult DeleteOperator(Operator ope)
+        public ActionResult DeleteOperator(int id)
         {
-            return View();
+            var operators = db.Operators.SingleOrDefault(e => e.Id == id);
+            
+            db.Operators.Remove(operators);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
         
     }

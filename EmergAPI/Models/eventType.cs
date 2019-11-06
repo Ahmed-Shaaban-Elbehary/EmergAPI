@@ -5,12 +5,10 @@ using System.Web;
 
 namespace EmergAPI.Models
 {
-    public class EventType
+    public enum EventType
     {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public ICollection<Event> Events { get; set; }
+        Police = 1,
+        Embulance = 2,
+        Fire = 3
     }
 }

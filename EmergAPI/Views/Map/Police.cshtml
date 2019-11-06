@@ -4,78 +4,260 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDZqyBirRugDr1tcVRyVgw07wZtURZWDw&callback=initMap"
         type="text/javascript"></script>
 <style>
     #map {
-        height:65vh;
-    }
-    .map-icon-label .map-icon {
-        font-size: 24px;
-        color: #FFFFFF;
-        line-height: 48px;
-        text-align: center;
-        white-space: nowrap;
+        height: 65vh;
     }
 </style>
 <script>
-    
     $(function () {
         var map = initMap();
-        //$("#btnP").click(function () {
         function LoadPolice() {
             $.ajax({
-                url: "/Map/Getpolice",
+                url: '@Url.Action("Getpolice")',
+                dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (res) {
                     $.each(res, function (i, r) {
                         var lat = parseFloat(r.Latitude);
                         var lng = parseFloat(r.Longitude);
-                        var marker = new mapIcons.Marker({
-                            position: { lat: lat, lng: lng },
-                            map: map,
-                            icon: {
-                                path: mapIcons.shapes.SQUARE_PIN,
-                                fillColor: '#00CCBB',
-                                fillOpacity: 1,
-                                strokeColor: '',
-                                strokeWeight: 0
-                            },
-                            map_icon_label: '<span class="map-icon map-icon-point-of-interest"></span>'
-                                
+                        var image = {
+                            url: '/images/police_pin.svg',
+                            scaledSize: new google.maps.Size(42, 58)
+                        };
+
+                        var contentString = '<button id="DeleteMapButton" class="btn btn-danger">Delete</button>';
+                        var infowindow = new google.maps.InfoWindow({
+                            content: contentString
                         });
+                        var marker = new google.maps.Marker({
+                            position: { lat: lat, lng: lng },
+                            icon: image,
+                            map: map,
+                        });
+                        google.maps.event.addListener(marker, 'mouseover', function () {
+                            map.setZoom(8);
+                        });
+
+                        google.maps.event.addListener(marker, 'click', function () {
+                            infowindow.open();
+                            window.open("/Map/ComingEvents/" + r.Id, "_blanck");
+                        });
+
                     });
                 }
             });
         }
-        setInterval(LoadPolice, 1000);
-        //});
+        setInterval(LoadPolice, 3000);
 
     });
-    
+
     function initMap() {
 
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 7,
             center: { lat: 26.8206, lng: 30.8025 },
-            mapTypeId: 'roadmap'
+            zoom: 6,
+            //styles: [
+            //    {
+            //        "elementType": "geometry",
+            //        "stylers": [
+            //            {
+            //                "color": "#212121"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "elementType": "labels.icon",
+            //        "stylers": [
+            //            {
+            //                "visibility": "off"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "elementType": "labels.text.fill",
+            //        "stylers": [
+            //            {
+            //                "color": "#757575"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "elementType": "labels.text.stroke",
+            //        "stylers": [
+            //            {
+            //                "color": "#212121"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "administrative",
+            //        "elementType": "geometry",
+            //        "stylers": [
+            //            {
+            //                "color": "#757575"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "administrative.country",
+            //        "elementType": "labels.text.fill",
+            //        "stylers": [
+            //            {
+            //                "color": "#9e9e9e"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "administrative.land_parcel",
+            //        "stylers": [
+            //            {
+            //                "visibility": "off"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "administrative.locality",
+            //        "elementType": "labels.text.fill",
+            //        "stylers": [
+            //            {
+            //                "color": "#bdbdbd"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "poi",
+            //        "elementType": "labels.text.fill",
+            //        "stylers": [
+            //            {
+            //                "color": "#757575"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "poi.park",
+            //        "elementType": "geometry",
+            //        "stylers": [
+            //            {
+            //                "color": "#181818"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "poi.park",
+            //        "elementType": "labels.text.fill",
+            //        "stylers": [
+            //            {
+            //                "color": "#616161"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "poi.park",
+            //        "elementType": "labels.text.stroke",
+            //        "stylers": [
+            //            {
+            //                "color": "#1b1b1b"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "road",
+            //        "elementType": "geometry.fill",
+            //        "stylers": [
+            //            {
+            //                "color": "#2c2c2c"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "road",
+            //        "elementType": "labels.text.fill",
+            //        "stylers": [
+            //            {
+            //                "color": "#8a8a8a"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "road.arterial",
+            //        "elementType": "geometry",
+            //        "stylers": [
+            //            {
+            //                "color": "#373737"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "road.highway",
+            //        "elementType": "geometry",
+            //        "stylers": [
+            //            {
+            //                "color": "#3c3c3c"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "road.highway.controlled_access",
+            //        "elementType": "geometry",
+            //        "stylers": [
+            //            {
+            //                "color": "#4e4e4e"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "road.local",
+            //        "elementType": "labels.text.fill",
+            //        "stylers": [
+            //            {
+            //                "color": "#616161"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "transit",
+            //        "elementType": "labels.text.fill",
+            //        "stylers": [
+            //            {
+            //                "color": "#757575"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "water",
+            //        "elementType": "geometry",
+            //        "stylers": [
+            //            {
+            //                "color": "#000000"
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        "featureType": "water",
+            //        "elementType": "labels.text.fill",
+            //        "stylers": [
+            //            {
+            //                "color": "#3d3d3d"
+            //            }
+            //        ]
+            //    }
+            //]
         });
         return map;
     }
+
 
 </script>
 
 
 
 <div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title">Police Emergency</h3>
         <div class="box-tools pull-right">
-            <!-- Buttons, labels, and many other things can be placed here! -->
-            <!-- Here is a label for example -->
-             @*<button id="btnP" class="btn btn-danger">GET</button>*@
         </div>
         <!-- /.box-tools -->
     </div>
@@ -85,5 +267,4 @@
 
         </div>
     </div>
-</div>
-<br /><br />
+    <br /><br />

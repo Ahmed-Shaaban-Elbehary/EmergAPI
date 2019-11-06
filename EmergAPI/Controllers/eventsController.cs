@@ -37,14 +37,14 @@ namespace EmergAPI.Controllers
         
         //POST:api/events
         [HttpPost]
-        public Event CreateEvent(Event @event)
+        public Event CreateEvent(Event events)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            db.Events.Add(@event);
+            db.Events.Add(events);
             db.SaveChanges();
-            return @event;
+            return events;
         }
         
         //PUT:api/events/id

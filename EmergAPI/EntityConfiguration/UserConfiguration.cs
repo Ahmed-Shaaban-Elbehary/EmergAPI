@@ -27,8 +27,6 @@ namespace EmergAPI.EntitytypeConfiguration
             Property(p => p.Email)
                 .HasMaxLength(255);
 
-            Property(p => p.Birthdate)
-                .HasColumnType("Date");
 
             Property(p => p.UpImage)
                 .HasMaxLength(1000)
@@ -40,23 +38,23 @@ namespace EmergAPI.EntitytypeConfiguration
             Property(p => p.Weight)
                 .HasPrecision(9, 2);
             
-            HasRequired(u => u.BloodType)
-                .WithMany(b => b.Users)
-                .Map(k => k.MapKey("BloodTypeId"));
+            //HasRequired(u => u.BloodType)
+            //    .WithMany(b => b.Users)
+            //    .Map(k => k.MapKey("BloodTypeId"));
 
-            HasMany(u => u.Diseases)
-                .WithMany(u => u.users)
-                .Map(m =>
-               {
-                   m.ToTable("UserDisease");
-                   m.MapLeftKey("DiseaseId");
-                   m.MapRightKey("UserId");
+            //HasMany(u => u.Diseases)
+            //    .WithMany(d => d.users)
+            //    .Map(m =>
+            //   {
+            //       m.ToTable("UsersDiseases");
+            //       m.MapLeftKey("UserId");
+            //       m.MapRightKey("DiseaseId");
 
-               });
+            //   });
 
-            HasMany(U => U.Events)
-                .WithRequired(E => E.User)
-                .Map(k => k.MapKey("UserId"));
+            //HasMany(U => U.Events)
+            //    .WithRequired(E => E.User)
+            //    .Map(k => k.MapKey("UserId"));
 
         }
     }

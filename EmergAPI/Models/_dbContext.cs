@@ -23,8 +23,6 @@ namespace EmergAPI.Models
         public DbSet<Disease> Diseases { get; set; }
 
         public DbSet<Event> Events { get; set; }
-
-        public DbSet<EventType> eventTypes { get; set; }
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -33,8 +31,6 @@ namespace EmergAPI.Models
             modelBuilder.Configurations.Add(new OperatorConfiguration());
             modelBuilder.Configurations.Add(new BloodTypeConfiguration());
             modelBuilder.Configurations.Add(new DiseaseConfiguration());
-            modelBuilder.Configurations.Add(new EventConfiguration());
-            modelBuilder.Configurations.Add(new EventTypeConfiguration());
             base.OnModelCreating(modelBuilder);
         }
 
